@@ -13,59 +13,33 @@ class Tracker:
         self.currentcalories = 0
 
     #getting the username of the user
-    def getusername(self) -> None:
-        self.username = input("Enter Baymer username: ")
+    def getusername(self, username) -> None:
+        self.username = username
 
     #getting the age of the user
-    def getage(self) -> None:
-        self.age = input("Enter your age in years: ")
+    def getage(self, age) -> None:
+        self.age = age
 
     #get the sex of the user
-    def getsex(self) -> None:
-        self.sex = input("What is your sex? ")
+    def getsex(self, sex) -> None:
+        self.sex = sex
 
     #getting height of the user and converting it into inches
-    def getheight(self) -> None:
-        flag1 = True
-        while flag1:
-            try:
-                feet, inches = input("Enter your height: ").split("'")
-                if True:
-                    inches = inches.replace('"',"")
-                    feet = feet.replace('"',"")
-                    inches = int(inches)
-                    feet = int(feet)
-                    if inches > 11.99:
-                        print("Inches must be less than 12. Please try again: ")
-                    else:
-                        flag1 = False
-            except ValueError:
-                print("Please enter in _'_",'"'," format.")
+    def getheight(self, height) -> None:
+        feet, inches = height.split("'")
+        inches = inches.replace('"',"")
+        feet = feet.replace('"',"")
+        inches = int(inches)
         feet = int(feet) * 12
         self.height = feet + inches
 
     #getting the weight of the user
-    def getweight(self) -> None:
-        self.weight = input("Enter your weight in lbs: ")
-        self.weight = int(self.weight)
+    def getweight(self, weight) -> None:
+        self.weight = int(weight)
 
     #get the budget that the user would like to use weekly or monthly
-    def getbudget(self) -> None:
-        Flag1 = True
-        while Flag1:
-            time = input("Would you like to budget weekly or monthly? ")
-            time = time.strip()
-            time = time.lower()
-            if time == "weekly" or time == "monthly":
-                Flag1 = False
-            else:
-                print("Please choose whether you would like to budget weekly or monthly.")
-        if time == "weekly":
-            self.budget = (float(input("Please enter how much you would like to spend weekly: $")))
-            self.budget = int(self.budget)
-        elif time == "monthly":
-            self.budget = (float(input("Please enter how much you would like to spend monthly: $")))
-            self.budget = int(self.budget)
+    def getbudget(self, budget) -> None:
+            self.budget = budget
 
     #get the BMI of the user using height and weight
     def getbmi(self) -> None:
@@ -76,26 +50,19 @@ class Tracker:
         self.bmi = float('%.1f' % (self.weight / (self.height ** 2)))
 
     #get the goal caloric intake of the user
-    def getcalorieintake(self) -> None:
-        self.getweight()
-        Flag1 = True
-        while Flag1:
-            getgoal = input("Are you trying to gain, maintain, or lose weight? ")
-            getgoal = getgoal.strip()
-            getgoal = getgoal.lower()
-            if getgoal == "gain" or getgoal == "maintain" or getgoal == "lose":
-                Flag1 = False
-            else:
-                print("Please only type in 'gain', 'maintain', or 'lose.")
-        if getgoal == "gain":
+    def getcalorieintake(self, goal) -> None:
+        goal = goal.strip()
+        goal = goal.lower()
+        if goal == "gain":
             self.calorieintake = self.weight * 18
             self.calorieintake = int(self.calorieintake)
-        elif getgoal == "maintain":
+        elif goal == "maintain":
             self.calorieintake = self.weight * 15
             self.calorieintake = int(self.calorieintake)
-        elif getgoal == "lose":
+        elif goal == "lose":
             self.calorieintake = self.weight * 13
             self.calorieintake = int(self.calorieintake)
+        self.currentcalories = self.calorieintake
 
     #subtract consumed calories from starting calories
     def consumecalories(self, intake: int):
@@ -104,6 +71,8 @@ class Tracker:
     def resetcalories(self):
         self.currentcalories = self.calorieintake
 
+    def ReturnCalories(self):
+        return self.currentcalories
 a = Tracker()
 a.consumecalories(10)
 print(a.currentcalories)
