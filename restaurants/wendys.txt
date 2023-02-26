@@ -1,0 +1,4 @@
+Item: Chicken Nuggets Cost: $10 Calories: 500
+Item: Burger Cost: $15 Calories: 800
+Item: soda Cost: $6 Calories: 900
+Link: www.wendys.com
