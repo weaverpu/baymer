@@ -6,6 +6,7 @@ class restaurant:
         self.name = ""
         self.lat = 0
         self.lon = 0
+        self.link = ""
     
     # This function will add menue items with items and costs to the objects menue variable
     def AddMenueItem(self, item: str, cost: int, cals: int) -> None:
@@ -21,6 +22,11 @@ class restaurant:
     # This function is meant to update the name of the restaurant from the restaurant text file
     def UpdateName(self, name : str) -> None:
         self.name = name
+    
+    # This function will update the restaurant with a link
+    def UpdateLink(self, link : str) -> None:
+        self.link = link
+
     
     # This function returns the name
     def ReturnName(self) -> str:
