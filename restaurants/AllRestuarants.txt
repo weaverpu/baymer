@@ -1,0 +1,6 @@
+Wendys: wendys.txt
+Taco Bell: tacobell.txt
+Skyline: skyline.txt
+Chickfilla: chickfilla.txt
+Panda Express: pandaexpress.txt
+
