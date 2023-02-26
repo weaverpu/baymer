@@ -11,6 +11,8 @@ class Tracker:
         self.sex = ''
         self.calorieintake = 0
         self.currentcalories = 0
+        self.currentwater = 0
+        self.waterintake = 0
 
     #getting the username of the user
     def getusername(self) -> None:
@@ -96,18 +98,28 @@ class Tracker:
         elif getgoal == "lose":
             self.calorieintake = self.weight * 13
             self.calorieintake = int(self.calorieintake)
+        self.currentcalories = self.calorieintake
 
     #subtract consumed calories from starting calories
     def consumecalories(self, intake: int):
+        self.getcalorieintake()
         self.currentcalories = self.currentcalories - intake
     
+    #reseting calorie intake back to full daily amount
     def resetcalories(self):
         self.currentcalories = self.calorieintake
 
-a = Tracker()
-a.consumecalories(10)
-print(a.currentcalories)
-    
+    #getting how much water the user should drink in a day
+    def getwaterintake(self):
+        self.getweight()
+        self.waterintake = self.getweight() / 2
+        self.currentwater = self.waterintake
 
+    #getting water intake after water has been consumed
+    def consumewater(self, intake: int):
+        self.getwaterintake()
+        self.currentwater -= intake
 
-
+    #reseting water intake at the end of the day
+    def resetwater(self):
+        self.currentwater = self.waterintake
